@@ -1,0 +1,24 @@
+{
+  "name": "supply/api",
+  "description": "STBZ supply API SDK for PHP",
+  "type": "library",
+  "keywords": ["supply", "stbz", "sdk"],
+  "require": {
+    "php": ">=7.0"
+  },
+  "homepage": "http://www.stbz.net/",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "stbz",
+      "email": "gukai@stbz.net",
+      "homepage": "http://www.stbz.net/"
+    }
+  ],
+  "minimum-stability": "stable",
+  "autoload": {
+    "psr-4": {
+      "supply\\": "src/API"
+    }
+  }
+}
