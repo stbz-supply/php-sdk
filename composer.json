@@ -1,5 +1,5 @@
 {
-  "name": "supply/api",
+  "name": "stbz-supply/php-sdk",
   "description": "STBZ supply API SDK for PHP",
   "type": "library",
   "keywords": ["supply", "stbz", "sdk"],
