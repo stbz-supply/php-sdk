@@ -5,11 +5,11 @@
  * Date: 2020/6/12
  * Time: 2:46 PM
  */
-namespace API;
+namespace Api;
 
-use API\Core\ClientException;
-use API\Core\Base;
-use API\Http\RequestClint;
+use Stbz\Api\Core\ClientException;
+use Stbz\Api\Core\Base;
+use Stbz\Api\Http\RequestClint;
 
 class SupplyClient extends Base
 {

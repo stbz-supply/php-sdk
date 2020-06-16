@@ -1,6 +1,6 @@
 <?php
 
-namespace API\Core;
+namespace Stbz\Api\Core;
 
 /**
  * Class ClientException

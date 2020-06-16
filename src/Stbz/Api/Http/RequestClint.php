@@ -5,9 +5,9 @@
  * Date: 2020/6/12
  * Time: 2:14 PM
  */
-namespace API\Http;
+namespace Stbz\Api\Http;
 
-use API\Core\Base;
+use Stbz\API\Core\Base;
 
 class RequestClint
 {

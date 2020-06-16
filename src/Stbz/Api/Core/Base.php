@@ -6,7 +6,7 @@
  * Time: 2:11 PM
  */
 
-namespace API\Core;
+namespace Stbz\Api\Core;
 
 class Base
 {
