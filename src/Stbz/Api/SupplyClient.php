@@ -1,11 +1,11 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: gu
+ * User: stbz
  * Date: 2020/6/12
  * Time: 2:46 PM
  */
-namespace Api;
+namespace Stbz\Api;
 
 use Stbz\Api\Core\ClientException;
 use Stbz\Api\Core\Base;
@@ -13,6 +13,12 @@ use Stbz\Api\Http\RequestClint;
 
 class SupplyClient extends Base
 {
+	public $params;
+
+
+	protected $getBody = [
+		'/v2/Goods/GetBulkGoodDetail','/v2/Goods/GetBulkGoodsMessage','/v2/order/availableCheck','/v2/order','/v2/logistic','/v2/logistic/firms'
+	];
 	/**
 	 * 构造函数
 	 *
@@ -39,14 +45,33 @@ class SupplyClient extends Base
 		self::checkEnv();
 	}
 
+	public function getApiResponse($method,$action,$params=[]){
 
-	public function MyGoodsLists($source,$page,$limit){
-		$this->addParam('page', $page);
-		$this->addParam('limit', $limit);
-		$this->addParam('source', $source);
-		$response = RequestClint::get('/v2/GoodsStorage/MyLists', $this);
+		if(in_array($action,$this->getBody) && strtolower($method)=="get"){
+			$method = "getbody";
+		}
 
-		var_dump($response);
+		$this->params = $params;
+		switch (strtolower($method)){
+			case "get":
+				foreach ($this->params as $k=>$v){
+					$this->addParam($k, $v);
+				}
+				break;
+			case "post":
+				$this->addBody(json_encode($this->params));
+				break;
+			case "getbody":
+				$this->addBody(json_encode($this->params));
+				break;
+			case "patch":
+				$this->addBody(json_encode($this->params));
+				break;
+			default:
+				break;
+		}
+		$response = RequestClint::$method($action, $this);
+		return $response;
 	}
 
 

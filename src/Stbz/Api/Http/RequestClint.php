@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: gu
+ * User: stbz
  * Date: 2020/6/12
  * Time: 2:14 PM
  */
@@ -35,6 +35,7 @@ class RequestClint
 			'Api-Nonce' => $Request->paramMap['Api-Nonce'],
 			'Api-Sign'=> $Request->paramMap['Api-Sign']
 		);
+
 		return self::curl_request($serverUrl, false ,$headers);
 	}
 
@@ -146,7 +147,6 @@ class RequestClint
 		}
 		$str_key .= $appsecret;
 		$str_key .= $body;
-
 		$sign = strtoupper(md5(sha1($str_key)));
 
 		return $sign;
@@ -217,7 +217,9 @@ class RequestClint
 	public static  function curl_request($url, $post, $headers=null, $timeout=120, $json=false){
 		$curl = curl_init();
 		curl_setopt($curl, CURLOPT_URL, $url);
-		curl_setopt($curl, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+		if(isset( $_SERVER['HTTP_USER_AGENT'])){
+			curl_setopt($curl, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+		}
 		curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
 		curl_setopt($curl, CURLOPT_AUTOREFERER, 1);
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
@@ -269,7 +271,9 @@ class RequestClint
 	public static  function curl_patch_request($url, $post, $headers=null, $timeout=120, $json=false){
 		$curl = curl_init();
 		curl_setopt($curl, CURLOPT_URL, $url);
-		curl_setopt($curl, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+		if(isset( $_SERVER['HTTP_USER_AGENT'])){
+			curl_setopt($curl, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+		}
 		curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
 		curl_setopt($curl, CURLOPT_AUTOREFERER, 1);
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
@@ -315,10 +319,12 @@ class RequestClint
 
 	}
 
-	public static  function curl_get_body_request($url, $post, $headers=null, $timeout=120, $json=false){
+	public static  function curl_get_body_request($url, $post, $headers=null, $timeout=600, $json=false){
 		$curl = curl_init();
 		curl_setopt($curl, CURLOPT_URL, $url);
-		curl_setopt($curl, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+		if(isset( $_SERVER['HTTP_USER_AGENT'])){
+			curl_setopt($curl, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+		}
 		curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
 		curl_setopt($curl, CURLOPT_AUTOREFERER, 1);
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
