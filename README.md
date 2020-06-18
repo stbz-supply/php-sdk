@@ -33,7 +33,7 @@ $ composer require stbz-supply/php-sdk
     
     //获取商品列表
     $param = ['page'=>1, 'limit'=>20, 'source'=>2];//请求参数
-    $method = 'post';//请求方法
+    $method = 'get';//请求方法
     $action = 'v2/Goods/Lists';//请求资源名
     $response = $supplyClient->getApiResponse($method,$action,$param);
 ```    
