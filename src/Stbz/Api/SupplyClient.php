@@ -71,6 +71,8 @@ class SupplyClient extends Base
 				break;
 		}
 		$response = RequestClint::$method($action, $this);
+		//清空请求参数
+		$this->removeAllParam();
 		return $response;
 	}
 

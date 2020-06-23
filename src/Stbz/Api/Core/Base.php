@@ -99,8 +99,18 @@ class Base
 				unset($this->paramMap[$k]);
 			}
 		}
-
 	}
+
+	public function removeAllParam()
+	{
+		foreach ($this->paramMap as $k => $v){
+			if($k!='Api-App-Key'){
+				unset($this->paramMap[$k]);
+			}
+		}
+		$this->preventAttack();
+	}
+
 	public function getParam($key)
 	{
 		return $this->paramMap[$key];

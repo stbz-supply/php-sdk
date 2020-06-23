@@ -24,7 +24,7 @@ try {
 
 //获取商品列表
 $param = ['page'=>1, 'limit'=>20, 'source'=>2];
-$response = $supplyClient->getApiResponse("post","/v2/Goods/Lists",$param);
+$response = $supplyClient->getApiResponse("get","/v2/Goods/Lists",$param);
 
 //获取商品详情
 //$param = ['id'=>890394];
