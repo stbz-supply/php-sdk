@@ -19,7 +19,7 @@ class Base
 	public $body = '';
 
 
-	public $serverRoot = 'http://api.jxhh.com';
+	public $serverRoot = 'https://api.jxhh.com';
 
 
 	public function __construct($app_secret, $app_key)
@@ -66,8 +66,8 @@ class Base
 	{
 		list($msec, $sec) = explode(' ', microtime());
 		$msectime = (float)sprintf('%.0f', (floatval($msec) + floatval($sec)) * 1000);
+		$msectime = self::NumToStr($msectime);
 		return $msectimes = substr($msectime, 0, 13);
-
 	}
 
 	public function setOnnce()
@@ -148,6 +148,21 @@ class Base
 			$StrQuery.=$k."=".urlencode($v);
 		}
 		return $StrQuery;
+	}
+
+	/**
+	 * 科学计数法，还原成字符串
+	 */
+	static function NumToStr($num){
+		if (stripos($num,'e')===false) return $num;
+		$num = trim(preg_replace('/[=\'"]/','',$num,1),'"');//出现科学计数法，还原成字符串
+		$result = "";
+		while ($num > 0){
+			$v = $num - floor($num / 10)*10;
+			$num = floor($num / 10);
+			$result   =   $v . $result;
+		}
+		return $result;
 	}
 
 }
