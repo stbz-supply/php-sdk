@@ -1,8 +1,7 @@
 
 ## supply-php-sdk
 
-supply-php-sdk是北京胜天半子有限公司官方SDK的Composer封装，支持php项目的供应链API对接。
-
+supply-php-sdk是北京胜天半子有限公司官方SDK的Composer封装，支持php项目的供应链API对接，整合了京东API、1688API、淘宝天猫API等上游渠道。
 ## 安装
 
 * 通过composer，这是推荐的方式，可以使用composer.json 声明依赖，或者运行下面的命令。
@@ -39,6 +38,8 @@ $ composer require stbz-supply/php-sdk
 ```    
 
 ##供应链平台
+
+官网网址 https://www.stbz.net/ 
 
 开放平台地址 https://open.jxhh.com/  
 
