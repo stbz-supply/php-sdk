@@ -139,7 +139,7 @@ class RequestClint
 	public static function setSign($data, $appsecret ,$body = '')
 	{
 		ksort($data);
-
+		$body = str_replace(" ","",$body);
 
 		$str_key="";
 		foreach ($data as $k=>$v){
